@@ -36,7 +36,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.patrykandpatryk.vico.sample.util.SampleChart
-import com.patrykandpatryk.vico.sample.util.Tab
 
 @Composable
 @OptIn(ExperimentalMaterialApi::class)
@@ -44,7 +43,6 @@ internal fun ChartPager(
     state: SwipeableState<Int>,
     itemCount: Int,
     sampleCharts: List<SampleChart>,
-    tab: Tab,
 ) {
     HorizontalPager(
         state = state,
@@ -111,10 +109,7 @@ internal fun ChartPager(
                 .fillMaxWidth(),
         ) {
             with(sampleCharts[it]) {
-                when (tab) {
-                    Tab.Compose -> composeBased()
-                    Tab.Views -> viewBased()
-                }
+                view()
             }
         }
     }

@@ -50,21 +50,5 @@ internal fun ComposeComposedChart(
         )
     }
 }
-
-@Composable
-internal fun ViewComposedChart(
-    composedChartEntryModelProducer: ComposedChartEntryModelProducer<ChartEntryModel>,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = ComposedChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = composedChartEntryModelProducer
-        chartView.marker = marker
-    }
-}
-
 @Suppress("MagicNumber")
 private val entityColors = longArrayOf(0xFF3D84A8, 0xFF46CDCF, 0xFFABEDD8)

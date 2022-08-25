@@ -78,27 +78,6 @@ internal fun ComposeColumnChart(
 }
 
 @Composable
-internal fun ViewColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val thresholdLine = rememberLineChartThresholdLine()
-    AndroidViewBinding(
-        factory = ColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.chart?.addDecoration(decoration = thresholdLine)
-        with(chartView.startAxis as VerticalAxis) {
-            this.maxLabelCount = MAX_LABEL_COUNT
-            this.valueFormatter = PercentageFormatAxisValueFormatter()
-        }
-    }
-}
-
-@Composable
 private fun rememberLineChartThresholdLine(): ThresholdLine {
     val labelComponent = textComponent(
         color = MaterialTheme.colorScheme.surface,

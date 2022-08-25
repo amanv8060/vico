@@ -52,26 +52,6 @@ internal fun ComposeLineChart(
     }
 }
 
-@Composable
-internal fun ViewLineChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = LineChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        (chartView.bottomAxis as Axis).guideline = null
-        chartView.chart?.addPersistentMarker(
-            x = PERSISTENT_MARKER_X,
-            marker = marker,
-        )
-    }
-}
-
 @Suppress("MagicNumber")
 private val entityColors = longArrayOf(0xFFAA96DA)
 private const val PERSISTENT_MARKER_X = 6f

@@ -70,29 +70,6 @@ internal fun ComposeLineChartWithLabelsInside(
 }
 
 @Composable
-internal fun ViewLineChartWithLabelsInside(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val axisLabel = lineChartWithLabelsInsideAxisLabel()
-    val legend = legend()
-    AndroidViewBinding(
-        factory = LineChartWithLabelsInsideBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.legend = legend
-
-        with(chartView.startAxis as VerticalAxis) {
-            horizontalLabelPosition = VerticalAxis.HorizontalLabelPosition.Inside
-            label = axisLabel
-        }
-    }
-}
-
-@Composable
 private fun lineChartWithLabelsInsideAxisLabel() = axisLabelComponent(
     horizontalPadding = LABEL_PADDING_HORIZONTAL_DP.dp,
     verticalPadding = LABEL_PADDING_VERTICAL_DP.dp,

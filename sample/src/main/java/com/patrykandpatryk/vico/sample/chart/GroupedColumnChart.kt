@@ -65,23 +65,6 @@ internal fun ComposeGroupedColumnChart(
 }
 
 @Composable
-internal fun ViewGroupedColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val thresholdLine = rememberGroupedColumnChartThresholdLine()
-    AndroidViewBinding(
-        factory = GroupedColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.chart?.setDecorations(decorations = listOf(thresholdLine))
-    }
-}
-
-@Composable
 internal fun rememberGroupedColumnChartThresholdLine(): ThresholdLine {
     val labelComponent = textComponent(
         color = MaterialTheme.colorScheme.surface,

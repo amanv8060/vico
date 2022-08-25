@@ -62,28 +62,5 @@ internal fun ComposeComplexComposedChart(
     }
 }
 
-@Composable
-internal fun ViewComplexComposedChart(
-    composedChartEntryModelProducer: ComposedChartEntryModelProducer<ChartEntryModel>,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = ComplexComposedChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = composedChartEntryModelProducer
-        chartView.marker = marker
-        (chartView.startAxis as Axis).guideline = null
-        with(chartView.chart as ComposedChart) {
-            with(charts[0] as ColumnChart) {
-                mergeMode = ColumnChart.MergeMode.Stack
-                targetVerticalAxisPosition = AxisPosition.Vertical.Start
-            }
-            (charts[1] as LineChart).targetVerticalAxisPosition = AxisPosition.Vertical.End
-        }
-    }
-}
-
 @Suppress("MagicNumber")
 private val entityColors = longArrayOf(0xFF68A7AD, 0xFF99C4C8, 0xFFE5CB9F)

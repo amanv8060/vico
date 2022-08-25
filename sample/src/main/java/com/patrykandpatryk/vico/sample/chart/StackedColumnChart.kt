@@ -53,23 +53,6 @@ internal fun ComposeStackedColumnChart(
     }
 }
 
-@Composable
-internal fun ViewStackedColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = StackedColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        (chartView.chart as ColumnChart).mergeMode = ColumnChart.MergeMode.Stack
-        (chartView.startAxis as VerticalAxis).maxLabelCount = MAX_LABEL_COUNT
-    }
-}
-
 @Suppress("MagicNumber")
 private val entityColors = longArrayOf(0xFF6639A6, 0xFF3490DE, 0xFF6FE7DD)
 private const val AXIS_LABEL_ROTATION_DEGREES = 45f
