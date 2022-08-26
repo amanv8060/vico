@@ -14,12 +14,21 @@
  * limitations under the License.
  */
 
-rootProject.name = "Vico"
+package com.patrykandpatryk.vico.view.extension
 
-include ":sample"
-include ":vico"
-include ":vico:view"
-include ":vico:compose"
-include ":vico:core"
-include ":vico:compose-m2"
-include ":vico:compose-m3"
+import android.content.res.Resources
+
+internal inline val Float.dp: Float
+    get() = this * Resources.getSystem().displayMetrics.density
+
+internal inline val Int.dp: Float
+    get() = this * Resources.getSystem().displayMetrics.density
+
+internal inline val Float.sp: Float
+    get() = this * Resources.getSystem().displayMetrics.scaledDensity
+
+internal inline val Int.sp: Int
+    get() = (this * Resources.getSystem().displayMetrics.scaledDensity).toInt()
+
+internal inline val Float.dpInt: Int
+    get() = dp.toInt()
