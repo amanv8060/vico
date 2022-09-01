@@ -22,6 +22,5 @@ import androidx.compose.runtime.Composable
 internal data class SampleChart(
     @StringRes val labelResourceId: Int,
     @StringRes val descriptionResourceId: Int,
-    val composeBased: @Composable () -> Unit,
-    val viewBased: @Composable () -> Unit,
+    val view: @Composable () -> Unit,
 )

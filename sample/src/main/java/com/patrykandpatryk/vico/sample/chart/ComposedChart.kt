@@ -18,7 +18,6 @@ package com.patrykandpatryk.vico.sample.chart
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.compose.axis.horizontal.topAxis
 import com.patrykandpatryk.vico.compose.axis.vertical.endAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
@@ -29,7 +28,6 @@ import com.patrykandpatryk.vico.compose.style.ProvideChartStyle
 import com.patrykandpatryk.vico.core.chart.composed.plus
 import com.patrykandpatryk.vico.core.entry.ChartEntryModel
 import com.patrykandpatryk.vico.core.entry.composed.ComposedChartEntryModelProducer
-import com.patrykandpatryk.vico.databinding.ComposedChartBinding
 import com.patrykandpatryk.vico.sample.extension.fromEntityColors
 import com.patrykandpatryk.vico.sample.util.marker
 
@@ -50,21 +48,5 @@ internal fun ComposeComposedChart(
         )
     }
 }
-
-@Composable
-internal fun ViewComposedChart(
-    composedChartEntryModelProducer: ComposedChartEntryModelProducer<ChartEntryModel>,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = ComposedChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = composedChartEntryModelProducer
-        chartView.marker = marker
-    }
-}
-
 @Suppress("MagicNumber")
 private val entityColors = longArrayOf(0xFF3D84A8, 0xFF46CDCF, 0xFFABEDD8)

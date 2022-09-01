@@ -27,13 +27,6 @@ import com.patrykandpatryk.vico.sample.chart.ComposeGroupedColumnChart
 import com.patrykandpatryk.vico.sample.chart.ComposeLineChart
 import com.patrykandpatryk.vico.sample.chart.ComposeLineChartWithLabelsInside
 import com.patrykandpatryk.vico.sample.chart.ComposeStackedColumnChart
-import com.patrykandpatryk.vico.sample.chart.ViewColumnChart
-import com.patrykandpatryk.vico.sample.chart.ViewComplexComposedChart
-import com.patrykandpatryk.vico.sample.chart.ViewComposedChart
-import com.patrykandpatryk.vico.sample.chart.ViewGroupedColumnChart
-import com.patrykandpatryk.vico.sample.chart.ViewLineChart
-import com.patrykandpatryk.vico.sample.chart.ViewLineChartWithLabelsInside
-import com.patrykandpatryk.vico.sample.chart.ViewStackedColumnChart
 
 internal fun getSampleCharts(
     chartEntryModelProducer: ChartEntryModelProducer,
@@ -44,45 +37,38 @@ internal fun getSampleCharts(
     SampleChart(
         labelResourceId = R.string.line_chart_label,
         descriptionResourceId = R.string.line_chart_description,
-        composeBased = { ComposeLineChart(chartEntryModelProducer = chartStepEntryModelProducer) },
-        viewBased = { ViewLineChart(chartEntryModelProducer = chartStepEntryModelProducer) },
+        view = { ComposeLineChart(chartEntryModelProducer = chartStepEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.column_chart_label,
         descriptionResourceId = R.string.column_chart_description,
-        composeBased = { ComposeColumnChart(chartEntryModelProducer = chartEntryModelProducer) },
-        viewBased = { ViewColumnChart(chartEntryModelProducer = chartEntryModelProducer) },
+        view = { ComposeColumnChart(chartEntryModelProducer = chartEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.composed_chart_label,
         descriptionResourceId = R.string.composed_chart_description,
-        composeBased = { ComposeComposedChart(composedChartEntryModelProducer = composedChartEntryModelProducer) },
-        viewBased = { ViewComposedChart(composedChartEntryModelProducer = composedChartEntryModelProducer) },
+        view = { ComposeComposedChart(composedChartEntryModelProducer = composedChartEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.stacked_column_chart_label,
         descriptionResourceId = R.string.stacked_column_chart_description,
-        composeBased = { ComposeStackedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
-        viewBased = { ViewStackedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
+        view = { ComposeStackedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.grouped_column_chart_label,
         descriptionResourceId = R.string.grouped_column_chart_description,
-        composeBased = { ComposeGroupedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
-        viewBased = { ViewGroupedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
+        view = { ComposeGroupedColumnChart(chartEntryModelProducer = multiChartEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.line_chart_with_labels_inside_label,
         descriptionResourceId = R.string.line_chart_with_labels_inside_description,
-        composeBased = { ComposeLineChartWithLabelsInside(chartEntryModelProducer = multiChartEntryModelProducer) },
-        viewBased = { ViewLineChartWithLabelsInside(chartEntryModelProducer = multiChartEntryModelProducer) },
+        view = { ComposeLineChartWithLabelsInside(chartEntryModelProducer = multiChartEntryModelProducer) },
     ),
     SampleChart(
         labelResourceId = R.string.complex_composed_chart_label,
         descriptionResourceId = R.string.complex_composed_chart_description,
-        composeBased = {
+        view = {
             ComposeComplexComposedChart(composedChartEntryModelProducer = composedChartEntryModelProducer)
         },
-        viewBased = { ViewComplexComposedChart(composedChartEntryModelProducer = composedChartEntryModelProducer) },
     ),
 )

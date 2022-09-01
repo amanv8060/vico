@@ -18,17 +18,14 @@ package com.patrykandpatryk.vico.sample.chart
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.compose.axis.horizontal.bottomAxis
 import com.patrykandpatryk.vico.compose.axis.vertical.startAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
 import com.patrykandpatryk.vico.compose.chart.column.columnChart
 import com.patrykandpatryk.vico.compose.style.ChartStyle
 import com.patrykandpatryk.vico.compose.style.ProvideChartStyle
-import com.patrykandpatryk.vico.core.axis.vertical.VerticalAxis
 import com.patrykandpatryk.vico.core.chart.column.ColumnChart
 import com.patrykandpatryk.vico.core.entry.ChartEntryModelProducer
-import com.patrykandpatryk.vico.databinding.StackedColumnChartBinding
 import com.patrykandpatryk.vico.sample.extension.fromEntityColors
 import com.patrykandpatryk.vico.sample.util.marker
 
@@ -50,23 +47,6 @@ internal fun ComposeStackedColumnChart(
             bottomAxis = bottomAxis,
             marker = marker(),
         )
-    }
-}
-
-@Composable
-internal fun ViewStackedColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = StackedColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        (chartView.chart as ColumnChart).mergeMode = ColumnChart.MergeMode.Stack
-        (chartView.startAxis as VerticalAxis).maxLabelCount = MAX_LABEL_COUNT
     }
 }
 

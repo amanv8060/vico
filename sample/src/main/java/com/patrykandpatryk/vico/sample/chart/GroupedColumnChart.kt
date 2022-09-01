@@ -21,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.compose.axis.horizontal.bottomAxis
 import com.patrykandpatryk.vico.compose.axis.vertical.startAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
@@ -37,7 +36,6 @@ import com.patrykandpatryk.vico.core.component.shape.ShapeComponent
 import com.patrykandpatryk.vico.core.component.shape.Shapes
 import com.patrykandpatryk.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatryk.vico.core.extension.copyColor
-import com.patrykandpatryk.vico.databinding.GroupedColumnChartBinding
 import com.patrykandpatryk.vico.sample.extension.fromEntityColors
 import com.patrykandpatryk.vico.sample.util.marker
 
@@ -61,23 +59,6 @@ internal fun ComposeGroupedColumnChart(
             bottomAxis = bottomAxis(),
             marker = marker(),
         )
-    }
-}
-
-@Composable
-internal fun ViewGroupedColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val thresholdLine = rememberGroupedColumnChartThresholdLine()
-    AndroidViewBinding(
-        factory = GroupedColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.chart?.setDecorations(decorations = listOf(thresholdLine))
     }
 }
 
