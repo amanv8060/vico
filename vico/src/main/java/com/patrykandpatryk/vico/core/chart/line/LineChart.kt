@@ -154,7 +154,7 @@ public open class LineChart(
                         pointPosition = pointPosition,
                         pointConnector = DefaultPointConnector(cubicStrength = cubicStrength),
                     )""",
-                imports = arrayOf("com.patrykandpatryk.vico.core.chart.DefaultPointConnector"),
+                imports = arrayOf("DefaultPointConnector"),
             ),
         )
         public constructor(

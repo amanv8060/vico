@@ -16,8 +16,36 @@
 
 plugins {
     id "org.jetbrains.dokka"
+    id "com.android.library"
+    id "kotlin-android"
 }
 
-project.allprojects { project ->
-    project.version = library.version_name
+apply from: "$rootDir/common-scripts.gradle"
+apply from: "$rootDir/dokka-common.gradle"
+
+android {
+    defaultConfig {
+        minSdk library.compose_min_sdk
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.composeCompiler
+    }
+
+    namespace = getNamespace(project)
+    group = library.groupId
+}
+
+dependencies {
+
+    vico_core_dependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+    vico_compose_dependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
 }
