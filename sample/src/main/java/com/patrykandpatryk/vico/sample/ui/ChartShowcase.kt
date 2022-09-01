@@ -23,14 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.patrykandpatryk.vico.sample.util.SampleChart
-import com.patrykandpatryk.vico.sample.util.Tab
 
 @Composable
 @OptIn(ExperimentalMaterialApi::class)
 internal fun ChartShowcase(
     sampleCharts: List<SampleChart>,
     state: SwipeableState<Int>,
-    tab: Tab,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -41,7 +39,6 @@ internal fun ChartShowcase(
             state = state,
             itemCount = sampleCharts.size,
             sampleCharts = sampleCharts,
-            tab = tab,
         )
     }
 }

@@ -18,7 +18,6 @@ package com.patrykandpatryk.vico.sample.chart
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.compose.axis.vertical.endAxis
 import com.patrykandpatryk.vico.compose.axis.vertical.startAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
@@ -26,15 +25,11 @@ import com.patrykandpatryk.vico.compose.chart.column.columnChart
 import com.patrykandpatryk.vico.compose.chart.line.lineChart
 import com.patrykandpatryk.vico.compose.style.ChartStyle
 import com.patrykandpatryk.vico.compose.style.ProvideChartStyle
-import com.patrykandpatryk.vico.core.axis.Axis
 import com.patrykandpatryk.vico.core.axis.AxisPosition
 import com.patrykandpatryk.vico.core.chart.column.ColumnChart
-import com.patrykandpatryk.vico.core.chart.composed.ComposedChart
 import com.patrykandpatryk.vico.core.chart.composed.plus
-import com.patrykandpatryk.vico.core.chart.line.LineChart
 import com.patrykandpatryk.vico.core.entry.ChartEntryModel
 import com.patrykandpatryk.vico.core.entry.composed.ComposedChartEntryModelProducer
-import com.patrykandpatryk.vico.databinding.ComplexComposedChartBinding
 import com.patrykandpatryk.vico.sample.extension.fromEntityColors
 import com.patrykandpatryk.vico.sample.util.marker
 
@@ -59,29 +54,6 @@ internal fun ComposeComplexComposedChart(
             modifier = modifier,
             marker = marker(),
         )
-    }
-}
-
-@Composable
-internal fun ViewComplexComposedChart(
-    composedChartEntryModelProducer: ComposedChartEntryModelProducer<ChartEntryModel>,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    AndroidViewBinding(
-        factory = ComplexComposedChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = composedChartEntryModelProducer
-        chartView.marker = marker
-        (chartView.startAxis as Axis).guideline = null
-        with(chartView.chart as ComposedChart) {
-            with(charts[0] as ColumnChart) {
-                mergeMode = ColumnChart.MergeMode.Stack
-                targetVerticalAxisPosition = AxisPosition.Vertical.Start
-            }
-            (charts[1] as LineChart).targetVerticalAxisPosition = AxisPosition.Vertical.End
-        }
     }
 }
 

@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.R
 import com.patrykandpatryk.vico.compose.axis.axisLabelComponent
 import com.patrykandpatryk.vico.compose.axis.horizontal.bottomAxis
@@ -38,7 +37,6 @@ import com.patrykandpatryk.vico.core.component.shape.Shapes
 import com.patrykandpatryk.vico.core.component.text.textComponent
 import com.patrykandpatryk.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatryk.vico.core.legend.VerticalLegend
-import com.patrykandpatryk.vico.databinding.LineChartWithLabelsInsideBinding
 import com.patrykandpatryk.vico.sample.util.marker
 
 @Composable
@@ -67,29 +65,6 @@ internal fun ComposeLineChartWithLabelsInside(
         marker = marker(),
         legend = legend(),
     )
-}
-
-@Composable
-internal fun ViewLineChartWithLabelsInside(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val axisLabel = lineChartWithLabelsInsideAxisLabel()
-    val legend = legend()
-    AndroidViewBinding(
-        factory = LineChartWithLabelsInsideBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.legend = legend
-
-        with(chartView.startAxis as VerticalAxis) {
-            horizontalLabelPosition = VerticalAxis.HorizontalLabelPosition.Inside
-            label = axisLabel
-        }
-    }
 }
 
 @Composable
