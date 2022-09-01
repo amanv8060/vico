@@ -23,45 +23,28 @@ apply from: "$rootDir/common-scripts.gradle"
 apply from: "$rootDir/dokka-common.gradle"
 
 android {
+    defaultConfig {
+        minSdk library.compose_min_sdk
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.composeCompiler
+    }
 
     namespace = getNamespace(project)
     group = library.groupId
-
-    publishing {
-
-        singleVariant("release") {
-
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
-}
-
-afterEvaluate {
-
-    publishing {
-
-        publications {
-
-            VicoCore(MavenPublication) {
-
-                groupId = library.groupId
-                artifactId = getArtifactId(project)
-                version = project.version
-                from components.release
-
-                customizePom(pom)
-                setUpRepositories(repositories)
-            }
-        }
-    }
-
-    setUpSigning(signing, publishing.publications.VicoCore)
 }
 
 dependencies {
 
     vico_core_dependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+    vico_compose_dependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
 }

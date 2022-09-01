@@ -18,5 +18,4 @@ rootProject.name = "Vico"
 
 include ":sample"
 include ":vico"
-include ":vico:compose"
 include ":vico:core"
