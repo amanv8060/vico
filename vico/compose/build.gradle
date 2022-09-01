@@ -76,4 +76,10 @@ dependencies {
     vico_compose_dependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
+    vico_compose_m3_dependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+    vico_compose_m2_dependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
 }

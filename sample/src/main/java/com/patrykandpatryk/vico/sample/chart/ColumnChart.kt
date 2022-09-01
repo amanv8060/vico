@@ -22,7 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidViewBinding
 import com.patrykandpatryk.vico.compose.axis.horizontal.bottomAxis
 import com.patrykandpatryk.vico.compose.axis.vertical.startAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
@@ -34,12 +33,10 @@ import com.patrykandpatryk.vico.compose.dimensions.dimensionsOf
 import com.patrykandpatryk.vico.core.DefaultDimens
 import com.patrykandpatryk.vico.core.axis.formatter.PercentageFormatAxisValueFormatter
 import com.patrykandpatryk.vico.core.axis.horizontal.HorizontalAxis
-import com.patrykandpatryk.vico.core.axis.vertical.VerticalAxis
 import com.patrykandpatryk.vico.core.chart.decoration.ThresholdLine
 import com.patrykandpatryk.vico.core.component.shape.ShapeComponent
 import com.patrykandpatryk.vico.core.component.shape.Shapes
 import com.patrykandpatryk.vico.core.entry.ChartEntryModelProducer
-import com.patrykandpatryk.vico.databinding.ColumnChartBinding
 import com.patrykandpatryk.vico.sample.util.marker
 
 @Composable
@@ -75,27 +72,6 @@ internal fun ComposeColumnChart(
         ),
         marker = marker(),
     )
-}
-
-@Composable
-internal fun ViewColumnChart(
-    chartEntryModelProducer: ChartEntryModelProducer,
-    modifier: Modifier = Modifier,
-) {
-    val marker = marker()
-    val thresholdLine = rememberLineChartThresholdLine()
-    AndroidViewBinding(
-        factory = ColumnChartBinding::inflate,
-        modifier = modifier,
-    ) {
-        chartView.entryProducer = chartEntryModelProducer
-        chartView.marker = marker
-        chartView.chart?.addDecoration(decoration = thresholdLine)
-        with(chartView.startAxis as VerticalAxis) {
-            this.maxLabelCount = MAX_LABEL_COUNT
-            this.valueFormatter = PercentageFormatAxisValueFormatter()
-        }
-    }
 }
 
 @Composable

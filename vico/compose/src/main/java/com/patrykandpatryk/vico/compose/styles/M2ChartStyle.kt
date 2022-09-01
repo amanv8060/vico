@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-package com.patrykandpatryk.vico.compose.m3.style
+package com.patrykandpatryk.vico.compose.styles
 
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.patrykandpatryk.vico.compose.style.ChartStyle
 
 /**
- * Creates a baseline [ChartStyle] implementation using the colors provided via [MaterialTheme.colorScheme].
+ * Creates a baseline [ChartStyle] implementation using the colors provided via [MaterialTheme.colors].
  * The colors may be customized.
  */
 @Composable
-public fun m3ChartStyle(
-    axisLabelColor: Color = MaterialTheme.colorScheme.onBackground,
-    axisGuidelineColor: Color = MaterialTheme.colorScheme.outline,
-    axisLineColor: Color = MaterialTheme.colorScheme.outline,
+public fun m2ChartStyle(
+    axisLabelColor: Color = MaterialTheme.colors.onBackground,
+    axisGuidelineColor: Color = MaterialTheme.colors.onBackground.copy(alpha = LINE_ALPHA),
+    axisLineColor: Color = MaterialTheme.colors.onBackground.copy(alpha = LINE_ALPHA),
     entityColors: List<Color> = listOf(
-        MaterialTheme.colorScheme.primary,
-        MaterialTheme.colorScheme.secondary,
-        MaterialTheme.colorScheme.tertiary,
+        MaterialTheme.colors.primary,
+        MaterialTheme.colors.secondary,
     ),
-    elevationOverlayColor: Color = MaterialTheme.colorScheme.primary,
+    elevationOverlayColor: Color = if (isSystemInDarkTheme()) MaterialTheme.colors.onBackground else Color.Transparent,
 ): ChartStyle = ChartStyle.fromColors(
     axisLabelColor = axisLabelColor,
     axisGuidelineColor = axisGuidelineColor,
@@ -43,3 +43,5 @@ public fun m3ChartStyle(
     entityColors = entityColors,
     elevationOverlayColor = elevationOverlayColor,
 )
+
+private const val LINE_ALPHA = 0.2f
