@@ -19,9 +19,9 @@ plugins {
     id "kotlin-android"
 }
 
-apply from: "$rootDir/common-scripts.gradle"
-
 android {
+    compileSdk library.target_sdk
+
     defaultConfig {
         minSdk library.compose_min_sdk
         targetSdk library.target_sdk
@@ -37,8 +37,15 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
         compose true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = [
+            "-Xexplicit-api=strict",
+            "-opt-in=kotlin.RequiresOptIn",
+        ]
     }
 
     compileOptions {
