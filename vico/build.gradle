@@ -16,8 +16,6 @@
 
 plugins {
     id "org.jetbrains.dokka"
-    id "maven-publish"
-    id "signing"
 }
 
 project.allprojects { project ->
