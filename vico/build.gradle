@@ -15,17 +15,38 @@
  */
 
 plugins {
-    id "org.jetbrains.dokka"
     id "com.android.library"
     id "kotlin-android"
 }
 
-apply from: "$rootDir/common-scripts.gradle"
-apply from: "$rootDir/dokka-common.gradle"
-
 android {
+    compileSdk library.target_sdk
+
     defaultConfig {
         minSdk library.compose_min_sdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = [
+            "-Xexplicit-api=strict",
+            "-opt-in=kotlin.RequiresOptIn",
+        ]
     }
 
     buildFeatures {
@@ -35,17 +56,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion versions.composeCompiler
     }
-
-    namespace = getNamespace(project)
-    group = library.groupId
 }
 
 dependencies {
 
-    vico_core_dependencies.each {
-        add(it.configuration, it.dependency, it.options)
-    }
-    vico_compose_dependencies.each {
+    vico_dependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
 }
