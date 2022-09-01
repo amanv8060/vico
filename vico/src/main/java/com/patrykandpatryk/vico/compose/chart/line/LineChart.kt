@@ -178,7 +178,7 @@ public fun lineSpec(
                 pointPosition = pointPosition,
                 pointConnector = DefaultPointConnector(cubicStrength = cubicStrength),
             )""",
-        imports = arrayOf("com.patrykandpatryk.vico.core.chart.DefaultPointConnector"),
+        imports = arrayOf("DefaultPointConnector"),
     ),
 )
 public fun lineSpec(

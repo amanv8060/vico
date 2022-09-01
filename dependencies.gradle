@@ -133,7 +133,7 @@ ext {
     ]
 
     sample_dependencies = [
-            [configuration: "implementation", dependency: project(":vico:core")],
+            [configuration: "implementation", dependency: project(":vico")],
             [configuration: "implementation", dependency: androidx_libs.appcompat],
             [configuration: "implementation", dependency: androidx_libs.core],
             [configuration: "implementation", dependency: androidx_libs.lifecycle],

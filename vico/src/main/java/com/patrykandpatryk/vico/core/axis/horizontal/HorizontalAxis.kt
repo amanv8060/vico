@@ -282,7 +282,7 @@ public class HorizontalAxis<Position : AxisPosition.Horizontal>(
         replaceWith = ReplaceWith(
             expression = "TickPosition",
             imports = arrayOf(
-                "com.patrykandpatryk.vico.core.axis.horizontal.HorizontalAxis.TickPosition",
+                "HorizontalAxis.TickPosition",
             ),
         ),
     )
@@ -300,7 +300,7 @@ public class HorizontalAxis<Position : AxisPosition.Horizontal>(
             replaceWith = ReplaceWith(
                 expression = "TickPosition.Edge",
                 imports = arrayOf(
-                    "com.patrykandpatryk.vico.core.axis.horizontal.HorizontalAxis.TickPosition",
+                    "HorizontalAxis.TickPosition",
                 ),
             ),
         )
@@ -318,7 +318,7 @@ public class HorizontalAxis<Position : AxisPosition.Horizontal>(
             message = "TickType has been replaced with `TickPosition`, which uses better naming and has more features.",
             replaceWith = ReplaceWith(
                 expression = "TickPosition.Center()",
-                imports = arrayOf("com.patrykandpatryk.vico.core.axis.horizontal.HorizontalAxis.TickPosition"),
+                imports = arrayOf("HorizontalAxis.TickPosition"),
             ),
         )
         Major,
