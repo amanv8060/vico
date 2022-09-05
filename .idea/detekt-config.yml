@@ -1,0 +1,73 @@
+comments:
+  active: true
+  UndocumentedPublicClass:
+    active: true
+    excludes:
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/commonTest/**"
+      - "**/jvmTest/**"
+      - "**/jsTest/**"
+      - "**/iosTest/**"
+      - "**/com/patrykandpatryk/vico/sample/**"
+  UndocumentedPublicFunction:
+    active: true
+    excludes:
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/commonTest/**"
+      - "**/jvmTest/**"
+      - "**/jsTest/**"
+      - "**/iosTest/**"
+      - "**/com/patrykandpatryk/vico/sample/**"
+  UndocumentedPublicProperty:
+    active: true
+    excludes:
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/commonTest/**"
+      - "**/jvmTest/**"
+      - "**/jsTest/**"
+      - "**/iosTest/**"
+      - "**/com/patrykandpatryk/vico/sample/**"
+complexity:
+  LongMethod:
+    threshold: 90
+  LongParameterList:
+    ignoreDefaultParameters: true
+    ignoreAnnotated:
+      - "Composable"
+      - "LongParameterListDrawFunction"
+  TooManyFunctions:
+    thresholdInFiles: 999
+    ignoreDeprecated: true
+    ignorePrivate: true
+    ignoreOverridden: true
+style:
+  MagicNumber:
+    excludes:
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/commonTest/**"
+      - "**/jvmTest/**"
+      - "**/jsTest/**"
+      - "**/iosTest/**"
+      - "**/preview/**"
+      - "**/Preview.kt"
+      - "**/Previews.kt"
+    ignoreNumbers:
+      - "-1"
+      - "0"
+      - "1"
+      - "2"
+      - "100"
+naming:
+  FunctionNaming:
+    ignoreAnnotated:
+      - "Composable"
+formatting:
+  active: true
+  TrailingComma:
+    active: true
+    allowTrailingComma: true
+    allowTrailingCommaOnCallSite: true
